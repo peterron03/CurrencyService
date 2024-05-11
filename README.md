@@ -8,7 +8,7 @@ To put it simply, CurrencyService is a server-sided table of data that you can a
 As stated in the very short description of InventoryService, Knit is used as a dependency. If you're unfamiliar with Knit, I highly suggest watching [this](https://www.youtube.com/watch?v=0Ty2ojfdOnA) video, which is a tutorial made by [@sleitnick](https://github.com/Sleitnick), the creator of Knit. Though CurrencyService can be used without much knowledge of Knit, it's recommended you understand Knit first.
 
 ## Examples
-CurrencyService is very simple and easy to use. To start off, even though it's not required as most functions automatically create a currency if it doesn't already exist, we're going to create an inventory when the player joins a game. You don't need to do this, but it's useful for better organization and overall ease of use. And of course, we'll be using Knit as it's required for CurrencyService.
+CurrencyService is very simple and easy to use. To start off, even though it's not required as most functions automatically create a currency if it doesn't already exist, we're going to create a currency when a player's data loads, using the .DataLoaded event, which happens almost immediately after the player joins the game. You don't need to do this, but it's useful for better organization and overall ease of use. And of course, we'll be using Knit as it's required for CurrencyService.
 ```lua
 -- Get Knit, the framework used for CurrencyService:
 local Knit = require(game.ReplicatedStorage.Knit)
@@ -25,7 +25,7 @@ end):catch(warn)
 local CurrencyService = Knit.GetService("CurrencyService")
 
 -- Create a Currency for a player upon joining:
-game.Players.PlayerAdded:Connect(function(player)
+CurrencyService.DataLoaded:Connect(function(player)
   CurrencyService:CreateCurrency(player, "Coins", 100)
 end)
 ```
