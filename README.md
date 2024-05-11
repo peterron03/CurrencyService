@@ -40,7 +40,7 @@ local RemoteEvent = somewhere.RemoteEvent
 RemoteEvent.OnServerEvent:Connect(function(player, item)
   if CurrencyService:CanPlayerAfford(player, "Coins", somewhere[item].Price) then
     CurrencyService:Subtract(player, "Coins", somewhere[item].Price)
-    givePlayerItem(item)
+    givePlayerItem(player, item)
   end
 end)
 ```
