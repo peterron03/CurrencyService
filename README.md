@@ -4,17 +4,17 @@ A Currency system for Roblox, built using the Knit framework.
 ## What is CurrencyService?
 To put it simply, CurrencyService is a server-sided table of data that you can add to, remove from, or get from. It allows for multiple currencies all in one place and easy organization to deal with. CurrencyService is by no means a top-tier must-have, but it's something I made for myself and decided to share with the world for anyone that might find it interesting or useful.
 
-## What is Knit?
-As stated previously, Knit is used as a dependency. If you're unfamiliar with Knit, I highly suggest watching [this](https://www.youtube.com/watch?v=0Ty2ojfdOnA) video, which is a tutorial made by [@sleitnick](https://github.com/Sleitnick), the creator of Knit. Though CurrencyService can be used without much knowledge of Knit, it's recommended you understand Knit first.
+## Dependencies (IMPORTANT)
+CurrencyService currently has 1 dependency - [Knit](https://github.com/Sleitnick/Knit). This dependency and any future dependencies that might be used by CurrencyService must be located within a folder named `Packages` inside `ReplicatedStorage`. Unless you edit the source code yourself to work differently, CurrencyService will NOT work without it's dependencies. Please make sure you're using them.
 
 ## Examples
 CurrencyService is very simple and easy to use. To start off, even though it's not required as most functions automatically create a currency if it doesn't already exist, we're going to create a currency when a player's data loads, using the .DataLoaded event, which happens almost immediately after the player joins the game. You don't need to do this, but it's useful for better organization and overall ease of use. And of course, we'll be using Knit as it's required for CurrencyService.
 ```lua
 -- Get Knit, the framework used for CurrencyService:
-local Knit = require(game.ReplicatedStorage.Knit)
+local Knit = require(game.ReplicatedStorage.Packages.Knit)
 
 -- Load the CurrencyService module from some folder, as well as any other modules you have:
-Knit.AddServices(game.ServerScriptService.Services)
+Knit.AddServices(somewhere.Services)
 
 -- Start Knit:
 Knit.Start():andThen(function()
