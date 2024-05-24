@@ -44,12 +44,12 @@ function Currency:CreateCurrency(player : Player, currencyName : string, startAm
 			self.PlayerData[player][currencyName] = startAmount
 
 			self.AddedCurrency:Fire(player, currencyName, startAmount)
-			self.CurrencyChanged:Fire(player, currencyName, self.PlayerData[player][currencyName])
 			self.Client.AddedCurrency:Fire(player, currencyName, startAmount)
-			self.Client.CurrencyChanged:Fire(player, currencyName, self.PlayerData[player][currencyName])
 		end
 
+		self.CurrencyChanged:Fire(player, currencyName, self.PlayerData[player][currencyName])
 		self.DataChanged:Fire(player, self.PlayerData[player])
+		self.Client.CurrencyChanged:Fire(player, currencyName, self.PlayerData[player][currencyName])
 		self.Client.DataChanged:Fire(player, self.PlayerData[player])
 	end
 
@@ -83,7 +83,11 @@ end
 
 function Currency:SetAmount(player : Player, currencyName : string, amountToSet : number)
 	self.PlayerData[player][currencyName] = amountToSet
+	
 	self.CurrencyChanged:Fire(player, currencyName, self.PlayerData[player][currencyName])
+	self.DataChanged:Fire(player, self.PlayerData[player])
+	self.Client.CurrencyChanged:Fire(player, currencyName, self.PlayerData[player][currencyName])
+	self.Client.DataChanged:Fire(player, self.PlayerData[player])
 end
 
 function Currency:Add(player : Player, currencyName : string, amountToAdd : number) : number
