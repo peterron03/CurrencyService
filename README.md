@@ -38,8 +38,8 @@ local RemoteEvent = somewhere.RemoteEvent
 
 -- Taking a player's coins and giving the requested item if they can afford it:
 RemoteEvent.OnServerEvent:Connect(function(player, item)
-  if CurrencyService:CanPlayerAfford(player, "Coins", somewhere[item].Price) then
-    CurrencyService:Subtract(player, "Coins", somewhere[item].Price)
+  if CurrencyService:CanPlayerAfford(player, "Coins", something.Price) then
+    CurrencyService:Subtract(player, "Coins", something.Price)
     givePlayerItem(player, item)
   end
 end)
