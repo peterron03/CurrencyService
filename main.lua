@@ -38,7 +38,7 @@ local Currency = Knit.CreateService {
 
 function Currency:CreateCurrency(player : Player, currencyName : string, startAmount : number?)
 	if not self.PlayerData[player][currencyName] then
-		self.PlayerData[player][currencyName] = {}
+		self.PlayerData[player][currencyName] = 0
 
 		if startAmount then
 			self.PlayerData[player][currencyName] = startAmount
